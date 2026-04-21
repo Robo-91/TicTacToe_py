@@ -14,9 +14,16 @@ boardmarks = {
  }
 board_keys = [k for k in boardmarks]
 
+## Update Board with the selection that the current player has made
+current_player = 'X'
+player_move = int(input(f"What is {current_player}'s move? (1-9))"))
+boardmarks[player_move] = current_player
+
 board = []
 
+## Display Board with selections that players have made
 def display_board():
+    board.clear()
     for key in boardmarks:
         if key in [3,6,9]:
             board.append(f'{boardmarks[key]}\n-+-+-\n')
