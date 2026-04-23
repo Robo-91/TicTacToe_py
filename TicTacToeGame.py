@@ -1,3 +1,5 @@
+import random
+
 welcome_message = f'Welcome to Tic-Tac-Toe!'
 game_ending_message = f'Thanks for playing!'
 players = ['X','O']
@@ -14,10 +16,15 @@ boardmarks = {
  }
 board_keys = [k for k in boardmarks]
 
+## When new game starts, randomly pick which player gets to go first
+current_player = players[random.randrange(0,2)]
+
 ## Update Board with the selection that the current player has made
-current_player = 'X'
 player_move = int(input(f"What is {current_player}'s move? (1-9))"))
 boardmarks[player_move] = current_player
+
+## Once when mark has been stored, set the current player
+current_player = [player for player in players if player != current_player]
 
 board = []
 
@@ -31,7 +38,8 @@ def display_board():
             board.append(f'{boardmarks[key]}|')
     return board
 
-print(''.join(display_board()))
+print(''.join(display_board()), board_keys)
+print(current_player)
 ##print(boardmarks)
 ##print(welcome_message)
 ##print(board_keys)
