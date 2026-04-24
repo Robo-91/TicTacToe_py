@@ -15,6 +15,15 @@ boardmarks = {
     9: ' '
  }
 board_keys = [k for k in boardmarks]
+winning_combinations = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+    [1,5,9],
+    [1,4,7],
+    [2,5,8],
+    [3,6,9]
+]
 
 ## When new game starts, randomly pick which player gets to go first
 current_player = players[random.randrange(0,2)]
@@ -40,6 +49,3 @@ def display_board():
 
 print(''.join(display_board()), board_keys)
 print(current_player)
-##print(boardmarks)
-##print(welcome_message)
-##print(board_keys)
