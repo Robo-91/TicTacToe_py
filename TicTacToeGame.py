@@ -28,8 +28,8 @@ winning_combinations = [
 ]
 
 move_log = {
-    'X': [1,2,3],
-    'O': []
+    'X': [[],[],[],[],[],[],[]],
+    'O': [[],[],[],[],[],[],[]]
 }
 
 game_over_flag = False
@@ -40,7 +40,11 @@ current_player = players[random.randrange(0,2)]
 ## Update Board with the selection that the current player has made
 player_move = int(input(f"What is {current_player}'s move? (1-9))"))
 boardmarks[player_move] = current_player
-move_log[current_player].append(player_move)
+
+## Keep a log of all moves that each player has made
+for moves, winning_combo in zip(move_log[current_player],winning_combinations):
+    if player_move in winning_combo:
+        moves.append(player_move)
 
 ## Once when mark has been stored, set the current player
 current_player = [player for player in players if player != current_player]
@@ -64,12 +68,13 @@ def display_board():
 
 for key in move_log:
     for combination in winning_combinations:
-        print(move_log[key], combination)
-        if combination == move_log[key]:
-            print('Winning combination!')
-        else:
-            print('Not a winning combination!')
+        print(combination, key)
+print(move_log)
 
 ## print(''.join(display_board()))
 ## print(current_player)
 ## print(move_log)
+##mylist = [3,1,2]
+##mylist.sort()
+##print(mylist == [1,2,3])
+print(current_player)
