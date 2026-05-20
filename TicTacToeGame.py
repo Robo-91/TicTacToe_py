@@ -43,6 +43,8 @@ def log_player_moves(log, winning_combinations):
     for moves, winning_combo in zip(log, winning_combinations):
         if player_move in winning_combo:
             moves.append(player_move)
+        else:
+            return
         moves.sort()
     
 board = []
@@ -69,7 +71,10 @@ def determine_winner(current_player_moves, winning_combinations):
 while game_over_flag == False:
     ## Update Board with the selection that the current player has made
     player_move = int(input(f"What is {current_player_string}'s move? (1-9))"))
-    boardmarks[player_move] = current_player_string
+    if boardmarks[player_move] != ' ':
+        print('Invalid move!')
+    else:
+        boardmarks[player_move] = current_player_string
 
     ## Display Board
     print(''.join(display_board()))
@@ -83,3 +88,5 @@ while game_over_flag == False:
     ## Once when mark has been stored, set the current player
     current_player = [player for player in players if player != current_player_string]
     current_player_string = "".join(current_player)
+
+    print(boardmarks)
