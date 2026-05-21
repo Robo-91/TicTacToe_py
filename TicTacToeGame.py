@@ -24,7 +24,8 @@ winning_combinations = [
     [1,5,9],
     [1,4,7],
     [2,5,8],
-    [3,6,9]
+    [3,6,9],
+    [3,5,7]
 ]
 
 move_log = {
@@ -52,6 +53,7 @@ board = []
 ## Display Board with selections that players have made
 def display_board():
     board.clear()
+    indices = [2,5,8]
     for key in boardmarks:
         if key in [3,6,9]:
             board.append(f'{boardmarks[key]}\n-+-+-\n')
@@ -88,5 +90,3 @@ while game_over_flag == False:
     ## Once when mark has been stored, set the current player
     current_player = [player for player in players if player != current_player_string]
     current_player_string = "".join(current_player)
-
-    print(boardmarks)
